@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:8888/aston-dz4
+    username: postgres
+    password: Gungun124
+
+  kafka:
+    bootstrap-servers:
+    consumer:
+      group-id:
