@@ -2,6 +2,7 @@ package com.aston.statisticsservice.service.impl;
 
 import com.aston.statisticsservice.entity.FoodDto;
 import com.aston.statisticsservice.entity.FoodStat;
+import com.aston.statisticsservice.entity.StatisticDto;
 import com.aston.statisticsservice.repository.StatisticsRepository;
 import com.aston.statisticsservice.scheduled.TopFoodService;
 import com.aston.statisticsservice.service.StatisticsService;
@@ -25,7 +26,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     public List<FoodDto> getUserHistory(Long id, Integer page, Integer pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         List<FoodStat> stats = repository.findByUser_id(id, pageable);
-        return stats.stream().map(e -> new FoodDto(e.getFood_id())).toList();
+        return stats.stream().map(e -> new FoodDto(e.getFoodId())).toList();
     }
 
     @Override
@@ -39,7 +40,13 @@ public class StatisticsServiceImpl implements StatisticsService {
     }
 
     @Override
-    public void addNewStatistic(FoodStat foodStat){
+    public void addNewStatistic(StatisticDto dto){
+        FoodStat foodStat = FoodStat.builder()
+                        .foodId(dto.getFoodId())
+                        .userId(dto.getUserId())
+                        .number(dto.getNumber())
+                        .boughtDate(dto.getBoughtDate())
+                        .build();
         repository.save(foodStat);
     }
 }

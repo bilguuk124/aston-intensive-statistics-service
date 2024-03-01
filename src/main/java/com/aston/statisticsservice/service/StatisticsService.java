@@ -1,7 +1,7 @@
 package com.aston.statisticsservice.service;
 
 import com.aston.statisticsservice.entity.FoodDto;
-import com.aston.statisticsservice.entity.FoodStat;
+import com.aston.statisticsservice.entity.StatisticDto;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ public interface StatisticsService {
 
     List<FoodDto> getMonthlyTopFood();
 
-    void addNewStatistic(FoodStat foodStat);
+    void addNewStatistic(StatisticDto dto);
 }

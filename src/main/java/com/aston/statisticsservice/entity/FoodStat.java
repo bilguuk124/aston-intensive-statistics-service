@@ -18,8 +18,8 @@ public class FoodStat {
     @SequenceGenerator(name = "food_stat_gen", sequenceName = "food_stat_seq")
     @Column(name = "id", nullable = false)
     private Long id;
-    private Long user_id;
-    private Long food_id;
+    private Long userId;
+    private Long foodId;
     private Integer number;
     private LocalDate boughtDate;
 }
